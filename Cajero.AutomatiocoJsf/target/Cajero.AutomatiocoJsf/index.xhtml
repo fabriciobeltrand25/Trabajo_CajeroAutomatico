@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+
+<h:head>
+    <title>Cajero Automático</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+
+<h:body>
+<div class="container">
+<h2>Cajero Automático</h2>
+
+<h:form>
+
+<h:commandButton value="Depositar" action="depositos.xhtml"  styleClass="menu-btn"/>
+
+<br/>
+
+<h:commandButton value="Retirar"  action="retiros.xhtml"  styleClass="menu-btn"/>
+
+<br/>
+
+<h:commandButton value="Consultar Saldo"  action="saldo.xhtml" styleClass="menu-btn"/>
+
+
+</h:form>
+
+</div>
+</h:body>
+</html>
