@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="jakarta.faces.html"
-xmlns:p="http://primefaces.org/ui">
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<title>Retiro</title>
+    <title>Retiro</title>
+    <h:outputStylesheet library="css" name="Estiloss.css" />
 </h:head>
 
 <h:body style="background-color:#f4f4f4;display:flex;justify-content:center;padding-top:50px;">
 
-<h:form id="formRetiro">
+    <h:form id="formRetiro">
 
-<p:panel header="Retiro de Efectivo" style="width:400px">
-<p:messages autoUpdate="true" closable="true"/>
-<h:panelGrid columns="1" style="width:100%">
+        <p:panel header="Retiro de Efectivo" style="width:400px">
 
-<p:outputLabel value="Número de Cuenta"/>
-<p:inputText value="#{cajeroBean.cuenta}" required="true" style="width:100%"/>
+            <p:messages autoUpdate="true" closable="true"/>
 
-<p:outputLabel value="PIN de Seguridad"/>
-<p:password value="#{cajeroBean.pin}" required="true" style="width:100%"/>
+            <h:panelGrid columns="1" style="width:100%">
 
-<p:outputLabel value="Monto a Retirar"/>
-<p:inputNumber value="#{cajeroBean.monto}" symbol="$ " decimalPlaces="2" style="width:100%"/>
+                <p:outputLabel value="Ingresa tu Cuenta"/>
+                <p:inputText id="cuenta" value="#{cajeroBean.cuenta}" required="true" label="Número de Cuenta" style="width:100%"/>
 
-</h:panelGrid>
+                <p:outputLabel value="Ingrese su PIN"/>
+                <p:password id="PIN" value="#{cajeroBean.pin}" required="true" label="Ingresa su Pin" style="width:100%"/>
 
-<p:commandButton
-value="Confirmar Retiro"
-action="#{cajeroBean.retirar}"
-update="@form"
-icon="pi pi-minus"
-style="width:100%;margin-top:10px"/>
+                <p:outputLabel value="Monto a Retirar"/>
+                <p:inputNumber value="#{cajeroBean.monto}" symbol="$ " decimalPlaces="2" style="width:100%"/>
 
-<p:commandButton value="Volver al menú" 
-    action="#{cajeroBean.irAlMenu}" 
-    immediate="true"
-    styleClass="ui-button-secondary"
-    style="width:100%;margin-top:10px"/>
+            </h:panelGrid>
 
- <h:outputText value="#{cajeroBean.mensaje}" style="font-weight:bold"/>
+            <p:commandButton
+                    value="Confirmar Retiro"
+                    action="#{cajeroBean.retirar}"
+                    update="@form"
+                    icon="pi pi-minus"
+                    style="width:100%;margin-top:10px"/>
 
-</p:panel>
+            <p:commandButton value="Volver al menú"
+                             action="#{cajeroBean.irAlMenu}"
+                             immediate="true"
+                             styleClass="ui-button-secondary"
+                             style="width:100%;margin-top:10px"/>
 
-</h:form>
+            <h:outputText value="#{cajeroBean.mensaje}" style="font-weight:bold"/>
+
+        </p:panel>
+
+    </h:form>
 
 </h:body>
 </html>
