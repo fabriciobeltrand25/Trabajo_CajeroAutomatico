@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="jakarta.faces.html">
+xmlns:h="jakarta.faces.html"
+xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Depósito</title>
-    <h:outputStylesheet library="css" name="styles.css"/>
+<title>Depósito</title>
+
 </h:head>
+<h:body style="display:flex;justify-content:center;padding-top:80px;">
 
-<h:body>
-    <div class="container">
-        <h2>Depósito</h2>
 
-        <h:form>
-            <h:messages style="color:red; list-style-type: none; padding: 0;" />
+<h:form>
 
-            <h:panelGrid columns="2" cellpadding="5">
-                <h:outputLabel value="Cuenta:" for="cuenta" />
-                <h:inputText id="cuenta" value="#{cajeroBean.cuenta}" 
-                             required="true" requiredMessage="Ingrese la cuenta"/>
+<p:panel header="Depósito de Efectivo" style="width:400px">
+<p:messages autoUpdate="true"/>
+<h:panelGrid columns="1" style="width:100%">
 
-                <h:outputLabel value="PIN:" for="pin" />
-                <h:inputSecret id="pin" value="#{cajeroBean.pin}" 
-                               required="true" requiredMessage="Ingrese el PIN"/>
+<p:outputLabel value="Ingresa tu Cuenta"/>
+<p:inputText value="#{cajeroBean.cuenta}"  required="true" style="width:100%"/>
 
-                <h:outputLabel value="Monto:" for="monto" />
-                <h:inputText id="monto" value="#{cajeroBean.monto}" 
-                             required="true" requiredMessage="Ingrese el monto"/>
-            </h:panelGrid>
+<p:outputLabel value="Ingrese su PIN"/>
+<p:password value="#{cajeroBean.pin}"  required="true" style="width:100%"/>
 
-            <div style="margin-top: 20px;">
-                <h:commandButton value="Depositar" 
-                                 action="#{cajeroBean.depositar}" 
-                                 styleClass="btn-principal"/>
-                
-                <br/><br/>
-                
-                <h:outputText value="#{cajeroBean.mensaje}" styleClass="mensaje"/>
-                
-                <br/><br/>
-                
-                <h:commandButton value="Volver al menú" 
-                                 action="index?faces-redirect=true" 
-                                 immediate="true" />
-            </div>
-        </h:form>
-    </div>
+<p:outputLabel value="Monto a Retirar"/>
+<p:inputNumber value="#{cajeroBean.monto}" symbol="$ " decimalPlaces="2" style="width:100%"/>
+</h:panelGrid>
+
+<p:commandButton value="Depositar"
+action="#{cajeroBean.depositar}"
+update="@form"
+icon="pi pi-check"
+style="width:100%;margin-top:10px"/>
+
+<p:commandButton value="Volver al menú" 
+    action="#{cajeroBean.irAlMenu}" 
+    immediate="true"
+    styleClass="ui-button-secondary"
+    style="width:100%;margin-top:10px"/>
+
+<h:outputText value="#{cajeroBean.mensaje}" style="font-weight:bold"/>
+
+</p:panel>
+
+</h:form>
+
 </h:body>
 </html>
